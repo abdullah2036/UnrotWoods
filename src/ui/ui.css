@@ -1,0 +1,152 @@
+:root {
+  /* one game pixel in screen pixels; set from main.ts */
+  --px: 2;
+  --ink: #d9e0ff;
+  --dim: #8a93bf;
+  --panel: rgba(8, 11, 28, 0.92);
+  --edge: #3b4677;
+  --on: #2fc596;
+  --warn: #ffb45c;
+  font-size: max(12px, calc(var(--px) * 5px));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #04060f;
+  overflow: hidden;
+}
+
+#stage {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+#game,
+#ui {
+  grid-area: 1 / 1;
+}
+
+#game canvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
+#ui {
+  position: relative;
+  pointer-events: none;
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  color: var(--ink);
+}
+
+.panel {
+  pointer-events: auto;
+  background: var(--panel);
+  border: 2px solid var(--edge);
+  box-shadow: 0 0 0 2px #04060f;
+  padding: 0.8em 1em;
+}
+
+.menu {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 20em;
+}
+
+.dev {
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+  width: 21em;
+  max-height: calc(100% - 1em);
+  overflow-y: auto;
+  font-size: 0.8em;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.6em;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  font-size: 1.2em;
+}
+
+h2 {
+  font-size: 1em;
+  color: var(--dim);
+}
+
+h3 {
+  margin: 0.8em 0 0.3em;
+  font-size: 0.85em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+.row {
+  display: flex;
+  gap: 0.4em;
+}
+
+.row.wrap,
+.dev .row {
+  flex-wrap: wrap;
+}
+
+button {
+  font: inherit;
+  color: var(--ink);
+  background: #141a3a;
+  border: 2px solid var(--edge);
+  padding: 0.25em 0.6em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1f2753;
+}
+
+button.on {
+  border-color: var(--on);
+  color: var(--on);
+}
+
+button.danger {
+  border-color: #7a3b2a;
+  color: var(--warn);
+}
+
+.status {
+  min-height: 1.2em;
+  margin: 0.8em 0 0;
+  color: var(--warn);
+}
+
+.hint {
+  margin: 0.8em 0 0;
+  color: var(--dim);
+  font-size: 0.85em;
+}
+
+.readout {
+  margin: 0.8em 0 0;
+  padding-top: 0.6em;
+  border-top: 2px solid var(--edge);
+  color: var(--dim);
+  font: inherit;
+  white-space: pre-wrap;
+}
